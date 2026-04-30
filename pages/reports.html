@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports | MIL-INT System</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <div class="system-logo">MIL-INT v3.2.1</div>
+                <div class="system-status">
+                    <div class="status-indicator"></div>
+                    <span>SYSTEM OPERATIONAL</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="system-time" id="system-time">Loading...</div>
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <div>
+                        <div>Admin User</div>
+                        <div class="clearance-badge">LEVEL 5</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <div class="nav-section">
+                <div class="nav-title">Main Operations</div>
+                <a href="../index.html" class="nav-item">
+                    <span>📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="agents.html" class="nav-item">
+                    <span>👤</span>
+                    <span>Agents</span>
+                    <span class="nav-alert">3</span>
+                </a>
+                <a href="cases.html" class="nav-item">
+                    <span>📁</span>
+                    <span>Cases</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Communications</div>
+                <a href="communications.html" class="nav-item">
+                    <span>💬</span>
+                    <span>Secure Chat</span>
+                    <span class="nav-alert">2</span>
+                </a>
+                <a href="reports.html" class="nav-item active">
+                    <span>📋</span>
+                    <span>Reports</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Classified</div>
+                <a href="secrets.html" class="nav-item">
+                    <span>🔐</span>
+                    <span>Vault</span>
+                </a>
+                <a href="audit.html" class="nav-item">
+                    <span>🔍</span>
+                    <span>Audit Logs</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">System</div>
+                <a href="#" class="nav-item">
+                    <span>⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item" style="color: var(--accent-red);">
+                    <span>🚪</span>
+                    <span>Secure Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+                <h1 class="page-title">Intelligence Reports</h1>
+                <p class="page-subtitle">Filed reports and intelligence summaries</p>
+            </div>
+
+            <!-- REPORTS TABLE -->
+            <div class="data-table-container">
+                <div class="table-header">
+                    <h3 class="table-title">📋 Report Archive</h3>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-secondary);">
+                            <input type="checkbox" id="filter-reviewed" checked>
+                            Show Reviewed
+                        </label>
+                        <button class="btn btn-primary" onclick="alert('Create new report functionality')">+ New Report</button>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Author</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reports-table-body">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- REPORT STATS -->
+            <div class="cards-grid mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">This Week</span>
+                        <span class="card-icon">📊</span>
+                    </div>
+                    <div class="card-value">12</div>
+                    <div class="card-change">+3 from last week</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Pending Review</span>
+                        <span class="card-icon">⏳</span>
+                    </div>
+                    <div class="card-value">7</div>
+                    <div class="card-change negative">Requires attention</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Reviewed</span>
+                        <span class="card-icon">✓</span>
+                    </div>
+                    <div class="card-value">45</div>
+                    <div class="card-change">This month</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Classified</span>
+                        <span class="card-icon">🔐</span>
+                    </div>
+                    <div class="card-value">8</div>
+                    <div class="card-change">TOP SECRET clearance</div>
+                </div>
+            </div>
+
+            <!-- RECENT SUBMISSIONS -->
+            <div class="logs-panel mt-3">
+                <div class="logs-header">
+                    <h3 class="logs-title">📝 Recent Submissions</h3>
+                </div>
+                <div class="logs-content">
+                    <div class="log-entry">
+                        <span class="log-time">16:45</span>
+                        <span class="log-level info">[NEW]</span>
+                        <span class="log-message">Weekly Intelligence Summary submitted by Analyst Team Alpha</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">15:30</span>
+                        <span class="log-level success">[REVIEWED]</span>
+                        <span class="log-message">Threat Assessment Report approved by Director</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">14:15</span>
+                        <span class="log-level warning">[PENDING]</span>
+                        <span class="log-message">Cyber Incident Report #4521 awaiting review</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">12:00</span>
+                        <span class="log-level success">[REVIEWED]</span>
+                        <span class="log-message">Field Operations Log processed and archived</span>
+                    </div>
+                    <div class="log-entry">
+                        <span class="log-time">10:30</span>
+                        <span class="log-level info">[NEW]</span>
+                        <span class="log-message">Counterintelligence Brief submitted by CI Division</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- REPORT DETAILS MODAL -->
+    <div class="modal-overlay" id="report-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Report Details</h3>
+                <button class="modal-close" onclick="closeModal('report-modal')">&times;</button>
+            </div>
+            <div class="modal-body" id="report-modal-body">
+                <!-- Populated by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('report-modal')">Close</button>
+                <button class="btn btn-primary">Download PDF</button>
+                <button class="btn btn-danger">Mark as Reviewed</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

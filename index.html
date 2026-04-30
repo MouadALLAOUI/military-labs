@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIL-INT | Classified Intelligence System</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <div class="system-logo">MIL-INT v3.2.1</div>
+                <div class="system-status">
+                    <div class="status-indicator"></div>
+                    <span>SYSTEM OPERATIONAL</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="system-time" id="system-time">Loading...</div>
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <div>
+                        <div>Admin User</div>
+                        <div class="clearance-badge">LEVEL 5</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <div class="nav-section">
+                <div class="nav-title">Main Operations</div>
+                <a href="index.html" class="nav-item active">
+                    <span>📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="pages/agents.html" class="nav-item">
+                    <span>👤</span>
+                    <span>Agents</span>
+                    <span class="nav-alert">3</span>
+                </a>
+                <a href="pages/cases.html" class="nav-item">
+                    <span>📁</span>
+                    <span>Cases</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Communications</div>
+                <a href="pages/communications.html" class="nav-item">
+                    <span>💬</span>
+                    <span>Secure Chat</span>
+                    <span class="nav-alert">2</span>
+                </a>
+                <a href="pages/reports.html" class="nav-item">
+                    <span>📋</span>
+                    <span>Reports</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Classified</div>
+                <a href="pages/secrets.html" class="nav-item">
+                    <span>🔐</span>
+                    <span>Vault</span>
+                </a>
+                <a href="pages/audit.html" class="nav-item">
+                    <span>🔍</span>
+                    <span>Audit Logs</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">System</div>
+                <a href="#" class="nav-item">
+                    <span>⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item" style="color: var(--accent-red);">
+                    <span>🚪</span>
+                    <span>Secure Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- ALERT BANNER -->
+            <div class="alert-banner">
+                <span class="alert-icon">⚠️</span>
+                <span class="alert-text">SECURITY ALERT: 3 failed login attempts detected from external IP range. Investigation in progress.</span>
+                <button class="alert-dismiss" onclick="this.parentElement.style.display='none'">&times;</button>
+            </div>
+
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+                <h1 class="page-title">Operations Dashboard</h1>
+                <p class="page-subtitle">Real-time intelligence overview and system status</p>
+            </div>
+
+            <!-- STATS CARDS -->
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Active Agents</span>
+                        <span class="card-icon">👤</span>
+                    </div>
+                    <div class="card-value" id="stat-agents">-</div>
+                    <div class="card-change">+2 this week</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Open Cases</span>
+                        <span class="card-icon">📁</span>
+                    </div>
+                    <div class="card-value" id="stat-cases">-</div>
+                    <div class="card-change negative">-1 from yesterday</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Security Alerts</span>
+                        <span class="card-icon">🚨</span>
+                    </div>
+                    <div class="card-value" id="stat-alerts">-</div>
+                    <div class="card-change negative">Requires attention</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Pending Reports</span>
+                        <span class="card-icon">📋</span>
+                    </div>
+                    <div class="card-value">7</div>
+                    <div class="card-change">Awaiting review</div>
+                </div>
+            </div>
+
+            <!-- SYSTEM LOGS -->
+            <div class="logs-panel">
+                <div class="logs-header">
+                    <h3 class="logs-title">📜 System Activity Log</h3>
+                    <div class="loading-text">
+                        <span class="loading-spinner"></span>
+                        <span>Live Feed</span>
+                    </div>
+                </div>
+                <div class="logs-content" id="system-logs">
+                    <!-- Logs will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- QUICK ACTIONS -->
+            <div class="cards-grid mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Quick Actions</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <button class="btn btn-primary" onclick="window.location.href='pages/agents.html'">+ New Agent</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='pages/cases.html'">+ New Case</button>
+                        <button class="btn btn-secondary" onclick="window.location.href='pages/reports.html'">+ New Report</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">System Status</span>
+                    </div>
+                    <div style="display: grid; gap: 12px; font-family: var(--font-mono); font-size: 0.85rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Database:</span>
+                            <span class="text-green">● Online</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Encryption:</span>
+                            <span class="text-green">● AES-256</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Last Backup:</span>
+                            <span class="text-green">● 16:30:10</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Threat Level:</span>
+                            <span class="text-amber">● ELEVATED</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Recent Activity</span>
+                    </div>
+                    <div style="display: grid; gap: 8px; font-size: 0.85rem;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-green">✓</span>
+                            <span class="text-muted">NIGHTHAWK checked in</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-green">✓</span>
+                            <span class="text-muted">Case #4521 updated</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-amber">!</span>
+                            <span class="text-muted">Failed login attempt</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-blue">i</span>
+                            <span class="text-muted">Backup completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
