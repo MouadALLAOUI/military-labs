@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cases | MIL-INT System</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <div class="system-logo">MIL-INT v3.2.1</div>
+                <div class="system-status">
+                    <div class="status-indicator"></div>
+                    <span>SYSTEM OPERATIONAL</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="system-time" id="system-time">Loading...</div>
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <div>
+                        <div>Admin User</div>
+                        <div class="clearance-badge">LEVEL 5</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <div class="nav-section">
+                <div class="nav-title">Main Operations</div>
+                <a href="../index.html" class="nav-item">
+                    <span>📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="agents.html" class="nav-item">
+                    <span>👤</span>
+                    <span>Agents</span>
+                    <span class="nav-alert">3</span>
+                </a>
+                <a href="cases.html" class="nav-item active">
+                    <span>📁</span>
+                    <span>Cases</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Communications</div>
+                <a href="communications.html" class="nav-item">
+                    <span>💬</span>
+                    <span>Secure Chat</span>
+                    <span class="nav-alert">2</span>
+                </a>
+                <a href="reports.html" class="nav-item">
+                    <span>📋</span>
+                    <span>Reports</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Classified</div>
+                <a href="secrets.html" class="nav-item">
+                    <span>🔐</span>
+                    <span>Vault</span>
+                </a>
+                <a href="audit.html" class="nav-item">
+                    <span>🔍</span>
+                    <span>Audit Logs</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">System</div>
+                <a href="#" class="nav-item">
+                    <span>⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item" style="color: var(--accent-red);">
+                    <span>🚪</span>
+                    <span>Secure Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+                <h1 class="page-title">Case Management</h1>
+                <p class="page-subtitle">Active investigations and intelligence operations</p>
+            </div>
+
+            <!-- CASES TABLE -->
+            <div class="data-table-container">
+                <div class="table-header">
+                    <h3 class="table-title">📁 Active Cases</h3>
+                    <button class="btn btn-primary" onclick="alert('Create new case functionality')">+ New Case</button>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Case Title</th>
+                            <th>Status</th>
+                            <th>Priority</th>
+                            <th>Assigned To</th>
+                            <th>Created</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cases-table-body">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- CASE DETAILS PANEL (IDOR Simulation) -->
+            <div class="mt-3 hidden" id="case-details-panel">
+                <!-- Populated by JavaScript when viewing a case -->
+            </div>
+
+            <!-- CASE STATS -->
+            <div class="cards-grid mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">By Priority</span>
+                    </div>
+                    <div style="display: grid; gap: 8px; font-size: 0.85rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-red">CRITICAL</span>
+                            <span>1</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-amber">HIGH</span>
+                            <span>2</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-blue">MEDIUM</span>
+                            <span>1</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">LOW</span>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">By Status</span>
+                    </div>
+                    <div style="display: grid; gap: 8px; font-size: 0.85rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-green">Active</span>
+                            <span>3</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-amber">Pending</span>
+                            <span>1</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Closed</span>
+                            <span>1</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Recent Activity</span>
+                    </div>
+                    <div style="display: grid; gap: 8px; font-size: 0.85rem;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-green">✓</span>
+                            <span class="text-muted">Case #5 created</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-blue">i</span>
+                            <span class="text-muted">Case #3 updated</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-green">✓</span>
+                            <span class="text-muted">Case #4 closed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

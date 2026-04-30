@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agents | MIL-INT System</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <div class="system-logo">MIL-INT v3.2.1</div>
+                <div class="system-status">
+                    <div class="status-indicator"></div>
+                    <span>SYSTEM OPERATIONAL</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="system-time" id="system-time">Loading...</div>
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <div>
+                        <div>Admin User</div>
+                        <div class="clearance-badge">LEVEL 5</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <div class="nav-section">
+                <div class="nav-title">Main Operations</div>
+                <a href="../index.html" class="nav-item">
+                    <span>📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="agents.html" class="nav-item active">
+                    <span>👤</span>
+                    <span>Agents</span>
+                    <span class="nav-alert">3</span>
+                </a>
+                <a href="cases.html" class="nav-item">
+                    <span>📁</span>
+                    <span>Cases</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Communications</div>
+                <a href="communications.html" class="nav-item">
+                    <span>💬</span>
+                    <span>Secure Chat</span>
+                    <span class="nav-alert">2</span>
+                </a>
+                <a href="reports.html" class="nav-item">
+                    <span>📋</span>
+                    <span>Reports</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Classified</div>
+                <a href="secrets.html" class="nav-item">
+                    <span>🔐</span>
+                    <span>Vault</span>
+                </a>
+                <a href="audit.html" class="nav-item">
+                    <span>🔍</span>
+                    <span>Audit Logs</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">System</div>
+                <a href="#" class="nav-item">
+                    <span>⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item" style="color: var(--accent-red);">
+                    <span>🚪</span>
+                    <span>Secure Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+                <h1 class="page-title">Agent Management</h1>
+                <p class="page-subtitle">Active field operatives and intelligence assets</p>
+            </div>
+
+            <!-- AGENTS TABLE -->
+            <div class="data-table-container">
+                <div class="table-header">
+                    <h3 class="table-title">👤 Registered Agents</h3>
+                    <div class="search-box">
+                        <span>🔍</span>
+                        <!-- VULNERABLE: Search input for XSS simulation -->
+                        <input type="text" id="agent-search" placeholder="Search agents...">
+                    </div>
+                </div>
+                <div id="search-results" style="padding: 12px 24px; font-size: 0.85rem;"></div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Codename</th>
+                            <th>Real Name</th>
+                            <th>Clearance</th>
+                            <th>Status</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agents-table-body">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- AGENT INFO PANEL -->
+            <div class="mt-3" style="background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px;">
+                <h3 class="mb-2" style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-primary);">📋 Agent Deployment Map</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                    <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 6px;">
+                        <div class="text-green" style="font-size: 1.5rem; font-weight: bold;">6</div>
+                        <div class="text-muted" style="font-size: 0.8rem;">Total Agents</div>
+                    </div>
+                    <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 6px;">
+                        <div class="text-green" style="font-size: 1.5rem; font-weight: bold;">4</div>
+                        <div class="text-muted" style="font-size: 0.8rem;">Active Deployments</div>
+                    </div>
+                    <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 6px;">
+                        <div class="text-amber" style="font-size: 1.5rem; font-weight: bold;">1</div>
+                        <div class="text-muted" style="font-size: 0.8rem;">Pending Assignment</div>
+                    </div>
+                    <div style="background: var(--bg-tertiary); padding: 16px; border-radius: 6px;">
+                        <div class="text-red" style="font-size: 1.5rem; font-weight: bold;">1</div>
+                        <div class="text-muted" style="font-size: 0.8rem;">Inactive</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- AGENT DETAILS MODAL -->
+    <div class="modal-overlay" id="agent-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">Agent Details</h3>
+                <button class="modal-close" onclick="closeModal('agent-modal')">&times;</button>
+            </div>
+            <div class="modal-body" id="agent-modal-body">
+                <!-- Populated by JavaScript -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('agent-modal')">Close</button>
+                <button class="btn btn-primary">Update Agent</button>
+                <button class="btn btn-danger">Deactivate</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

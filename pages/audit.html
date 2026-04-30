@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audit Logs | MIL-INT System</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <div class="system-logo">MIL-INT v3.2.1</div>
+                <div class="system-status">
+                    <div class="status-indicator"></div>
+                    <span>SYSTEM OPERATIONAL</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="system-time" id="system-time">Loading...</div>
+                <div class="user-info">
+                    <div class="user-avatar">AD</div>
+                    <div>
+                        <div>Admin User</div>
+                        <div class="clearance-badge">LEVEL 5</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SIDEBAR -->
+        <nav class="sidebar">
+            <div class="nav-section">
+                <div class="nav-title">Main Operations</div>
+                <a href="../index.html" class="nav-item">
+                    <span>📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="agents.html" class="nav-item">
+                    <span>👤</span>
+                    <span>Agents</span>
+                    <span class="nav-alert">3</span>
+                </a>
+                <a href="cases.html" class="nav-item">
+                    <span>📁</span>
+                    <span>Cases</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Communications</div>
+                <a href="communications.html" class="nav-item">
+                    <span>💬</span>
+                    <span>Secure Chat</span>
+                    <span class="nav-alert">2</span>
+                </a>
+                <a href="reports.html" class="nav-item">
+                    <span>📋</span>
+                    <span>Reports</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">Classified</div>
+                <a href="secrets.html" class="nav-item">
+                    <span>🔐</span>
+                    <span>Vault</span>
+                </a>
+                <a href="audit.html" class="nav-item active">
+                    <span>🔍</span>
+                    <span>Audit Logs</span>
+                </a>
+            </div>
+
+            <div class="nav-section">
+                <div class="nav-title">System</div>
+                <a href="#" class="nav-item">
+                    <span>⚙️</span>
+                    <span>Settings</span>
+                </a>
+                <a href="#" class="nav-item" style="color: var(--accent-red);">
+                    <span>🚪</span>
+                    <span>Secure Logout</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+                <h1 class="page-title">Security Audit Logs</h1>
+                <p class="page-subtitle">System access and activity monitoring</p>
+            </div>
+
+            <!-- SECURITY SUMMARY -->
+            <div class="alert-banner" style="background: rgba(255, 68, 68, 0.1); border-color: var(--accent-red);">
+                <span class="alert-icon">🚨</span>
+                <span class="alert-text">SECURITY NOTICE: 3 suspicious activities detected in the last 24 hours. Review flagged entries immediately.</span>
+                <button class="btn btn-danger" style="padding: 6px 12px; font-size: 0.75rem;">Investigate</button>
+            </div>
+
+            <!-- AUDIT TABLE -->
+            <div class="data-table-container">
+                <div class="table-header">
+                    <h3 class="table-title">🔍 Access Log</h3>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <div class="search-box">
+                            <span>🔍</span>
+                            <input type="text" placeholder="Filter logs..." style="width: 150px;">
+                        </div>
+                        <button class="btn btn-secondary" onclick="alert('Export functionality')">📥 Export</button>
+                        <button class="btn btn-primary" onclick="alert('Refresh logs')">🔄 Refresh</button>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Timestamp</th>
+                            <th>User</th>
+                            <th>Action</th>
+                            <th>Status</th>
+                            <th>IP Address</th>
+                        </tr>
+                    </thead>
+                    <tbody id="audit-table-body">
+                        <!-- Populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- THREAT ANALYSIS -->
+            <div class="cards-grid mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Today's Activity</span>
+                        <span class="card-icon">📊</span>
+                    </div>
+                    <div class="card-value">1,247</div>
+                    <div class="card-change">+12% from yesterday</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Failed Attempts</span>
+                        <span class="card-icon">🚫</span>
+                    </div>
+                    <div class="card-value text-red">23</div>
+                    <div class="card-change negative">Requires review</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Blocked IPs</span>
+                        <span class="card-icon">🛡️</span>
+                    </div>
+                    <div class="card-value">7</div>
+                    <div class="card-change">Currently blocked</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Active Sessions</span>
+                        <span class="card-icon">👥</span>
+                    </div>
+                    <div class="card-value">12</div>
+                    <div class="card-change">Across 6 locations</div>
+                </div>
+            </div>
+
+            <!-- SUSPICIOUS ACTIVITY PANEL -->
+            <div class="logs-panel mt-3">
+                <div class="logs-header">
+                    <h3 class="logs-title">⚠️ Flagged Suspicious Activities</h3>
+                    <button class="btn btn-secondary" onclick="alert('Clear flags functionality')">Clear Reviewed</button>
+                </div>
+                <div class="logs-content">
+                    <div class="log-entry" style="border-left: 3px solid var(--accent-red); padding-left: 12px;">
+                        <span class="log-time">16:38:55</span>
+                        <span class="log-level error">[FAILED]</span>
+                        <span class="log-message">Multiple failed login attempts from IP 203.45.67.89 - Possible brute force attack</span>
+                    </div>
+                    <div class="log-entry" style="border-left: 3px solid var(--accent-red); padding-left: 12px;">
+                        <span class="log-time">16:25:44</span>
+                        <span class="log-level error">[BLOCKED]</span>
+                        <span class="log-message">Unauthorized admin access attempt from unknown user - IP 185.234.72.11</span>
+                    </div>
+                    <div class="log-entry" style="border-left: 3px solid var(--accent-amber); padding-left: 12px;">
+                        <span class="log-time">16:15:21</span>
+                        <span class="log-level warning">[SUSPICIOUS]</span>
+                        <span class="log-message">Unusual API call pattern detected from external IP 45.67.89.123</span>
+                    </div>
+                    <div class="log-entry" style="border-left: 3px solid var(--accent-amber); padding-left: 12px;">
+                        <span class="log-time">14:32:10</span>
+                        <span class="log-level warning">[ANOMALY]</span>
+                        <span class="log-message">After-hours database access by agent_viper - Flagged for review</span>
+                    </div>
+                    <div class="log-entry" style="border-left: 3px solid var(--accent-red); padding-left: 12px;">
+                        <span class="log-time">03:15:22</span>
+                        <span class="log-level error">[INTRUSION]</span>
+                        <span class="log-message">Port scan detected from IP range 198.51.100.0/24 - Automatically blocked</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GEO MAP PLACEHOLDER -->
+            <div class="card mt-3" style="min-height: 300px; display: flex; align-items: center; justify-content: center;">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">🗺️</div>
+                    <div class="text-muted">Geographic Threat Map</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">
+                        Real-time visualization of access attempts by location<br>
+                        <span class="text-green">● Normal</span> &nbsp;
+                        <span class="text-amber">● Suspicious</span> &nbsp;
+                        <span class="text-red">● Blocked</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOG CONFIGURATION -->
+            <div class="cards-grid mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Log Retention</span>
+                    </div>
+                    <div style="display: grid; gap: 12px; font-size: 0.85rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Access Logs:</span>
+                            <span class="text-green">90 days</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Security Events:</span>
+                            <span class="text-green">1 year</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Audit Trail:</span>
+                            <span class="text-green">7 years</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Alert Thresholds</span>
+                    </div>
+                    <div style="display: grid; gap: 12px; font-size: 0.85rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Failed Logins:</span>
+                            <span class="text-amber">5 attempts</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">API Rate Limit:</span>
+                            <span class="text-amber">100/min</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span class="text-muted">Session Timeout:</span>
+                            <span class="text-blue">30 minutes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Monitoring Status</span>
+                    </div>
+                    <div style="display: grid; gap: 8px; font-size: 0.85rem;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-green">✓</span>
+                            <span>Intrusion Detection System</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-green">✓</span>
+                            <span>Real-time Alerting</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-green">✓</span>
+                            <span>Automated Blocking</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="text-green">✓</span>
+                            <span>SIEM Integration</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
